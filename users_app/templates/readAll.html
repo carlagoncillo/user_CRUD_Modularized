@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{{ url_for('static', filename='/css/style.css') }}">
+    <title>Users</title>
+</head>
+<body>
+    <div class="home-box">
+        <h1>All Users</h1>
+        <table class="users-table">
+            <th>
+                <tr class="header">
+                    <th class="space-between">First Name</th>
+                    <th class="space-between">Last Name</th>
+                    <th class="space-between">Email</th>
+                    <th class="space-between">Created At</th>
+                    <th class="space-between">Updated At</th>
+                    <th class="space-between">Actions</th>
+                </tr>
+            </th>
+            <tbody>
+                {% for user in users %}
+                <tr>
+                    <td class="space-between">{{ user.first_name }}</td>
+                    <td class="space-between">{{ user.last_name }}</td>
+                    <td class="space-between">{{ user.email }}</td>
+                    <td class="space-between">{{ user.created_at.strftime("%b %d %Y") }}</td>
+                    <td class="space-between">{{ user.updated_at.strftime("%b %d %Y") }}</td>
+                    <td class="space-between">
+                        <a href="/user/show/{{ user.id }}">Show</a> |
+                        <a href="/user/edit/{{ user.id }}">Edit</a> |
+                        <a href="/user/destroy/{{ user.id }}">Delete</a>
+                    </td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+        <button class="home-btn"><a class="underline" href="/user/new">Create New User</a></button>
+    </div>
+</body>
+</html>

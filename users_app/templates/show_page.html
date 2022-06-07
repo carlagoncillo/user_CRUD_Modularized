@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{{ url_for('static', filename='/css/style.css') }}">
+    <title>User</title>
+</head>
+<body>
+    <div class="user-box">
+        <h1>User {{user.id}}</h1>
+        <p>Full Name: {{user.full_name()}}</p>
+        <p>Email: {{user.email}}</p>
+        <p>Created On: {{user.created_at.strftime("%b %d %Y")}}</p>
+        <p>Last Updated On: {{user.updated_at.strftime("%b %d %Y")}}</p>
+        <div class="edit-delete">
+            <a href="/user/edit/{{ user.id }}">Edit</a> |
+            <a href="/user/destroy/{{ user.id }}">Delete</a>
+        </div>
+        <a href="/">Home</a>
+    </div>    
+</body>
+</html>
